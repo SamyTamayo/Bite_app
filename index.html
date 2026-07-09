@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>BITE</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="nav">
+  <button onclick="showScreen('home')">Inicio</button>
+  <button onclick="showScreen('camera')">Agregar</button>
+  <button onclick="showScreen('progress')">Progreso</button>
+  <button onclick="showScreen('tips')">Tips</button>
+</nav>
+
+<!-- PANTALLA 1: HOME -->
+<section id="home" class="screen active">
+  <h2>Balance diario</h2>
+
+  <div class="circle">100%</div>
+  <p>Meta cumplida</p>
+
+  <div class="foods">
+    <div>Desayuno ✔</div>
+    <div>Comida ✔</div>
+    <div>Cena ✔</div>
+  </div>
+
+  <div class="card">
+    <h3>Tips: Recetas</h3>
+    <p>Tacos de carne asada</p>
+  </div>
+</section>
+
+<!-- PANTALLA 2: CAMARA -->
+<section id="camera" class="screen">
+  <h2>Tomar foto</h2>
+  <button class="main-btn" onclick="startAnalysis()">📸 Capturar</button>
+  <button onclick="showScreen('manual')">Ingreso manual</button>
+</section>
+
+<!-- PANTALLA 3: ANALIZANDO -->
+<section id="analyzing" class="screen">
+  <h2>Analizando comida...</h2>
+  <div class="loader"></div>
+  <button onclick="cancelAnalysis()">Cancelar</button>
+</section>
+
+<!-- PANTALLA 4: ERROR -->
+<section id="error" class="screen">
+  <h2>No se pudo reconocer la comida</h2>
+  <p>Intenta nuevamente o ingrésala manualmente</p>
+  <button onclick="showScreen('camera')">Reintentar</button>
+  <button onclick="showScreen('manual')">Ingreso manual</button>
+</section>
+
+<!-- PANTALLA 5: CONFIRMAR -->
+<section id="confirm" class="screen">
+  <h2>Confirmar comida</h2>
+
+  <p id="foodName">Ensalada de pollo</p>
+
+  <select id="category">
+    <option>Saludable</option>
+    <option>Normal</option>
+    <option>Antojo</option>
+  </select>
+
+  <button class="main-btn" onclick="saveFood()">Guardar</button>
+  <button onclick="showScreen('camera')">Cancelar</button>
+</section>
+
+<!-- PANTALLA 6: REGISTRO EXITOSO -->
+<section id="success" class="screen">
+  <h2>¡Buen registro!</h2>
+  <p>Tu comida ha sido registrada</p>
+</section>
+
+<!-- PANTALLA 7: COMIDAS -->
+<section id="progress" class="screen">
+  <h2>Comidas de hoy</h2>
+  <ul id="foodList"></ul>
+</section>
+
+<!-- PANTALLA 8: MANUAL -->
+<section id="manual" class="screen">
+  <h2>Ingreso manual</h2>
+  <input type="text" id="manualFood" placeholder="Ej: arroz con pollo">
+  <button class="main-btn" onclick="addManualFood()">Guardar</button>
+</section>
+
+<!-- PANTALLA 9: TIPS -->
+<section id="tips" class="screen">
+  <h2>Recetas</h2>
+  <p>Tacos de carne asada</p>
+</section>
+
+<!-- PANTALLA 10: AYUDA -->
+<section id="help" class="screen">
+  <h2>Ayuda</h2>
+  <p>¿Cómo usar la app?</p>
+  <ul>
+    <li>Toma una foto o ingresa comida manualmente</li>
+    <li>Confirma la categoría</li>
+    <li>Revisa tu progreso</li>
+  </ul>
+</section>
+
+<script src="bite.js"></script>
+</body>
+</html>
